@@ -26,8 +26,7 @@ let resPrint()=
 
 //resPrint()
 
-open System
-
+//3
 let circleS (r: float) : float =
     Math.PI * r * r
 
@@ -40,4 +39,15 @@ let cirCylPrint () =
     printfn $"Площадь круга = {s}"
     printfn $"Объём цилиндра = {v}"
 
-cirCylPrint ()
+//cirCylPrint ()
+
+//4
+let rec sumD n =
+    if n = 0 then 0
+    else
+        let res = sumD (n/10)
+        let last = n % 10
+        res + last
+let sumPrint() =
+    printfn($"Сумма цифр числа = {sumD 123}")
+sumPrint()
