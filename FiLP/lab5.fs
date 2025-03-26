@@ -50,4 +50,19 @@ let rec sumD n =
         res + last
 let sumPrint() =
     printfn($"Сумма цифр числа = {sumD 123}")
-sumPrint()
+//sumPrint()
+
+//5
+let rec sumDDuwn n =
+    if n = 0 then 0
+    else
+        (n % 10) + sumDDuwn (n/10)
+let sumDTail n =
+    let rec sum n acc =
+        if n = 0 then 0
+        else
+            sum (n / 10) (acc + n % 10)
+    sum n 0
+printf($"Сумма рекурсия вниз через выражение = {sumDDuwn 123}/n")
+printf($"Сумма хвостовая рекурсия = {sumDTail 123}")
+
