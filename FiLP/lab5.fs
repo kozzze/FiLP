@@ -163,3 +163,13 @@ let quiz input =
         | "Ruby" -> Console.WriteLine("ВХАХВАХВХАХВА")
         | _ -> Console.WriteLine("Иди учись, бестолочь")
 quiz "Ruby"
+
+//12
+let curryQuiz () =
+    let input = Console.ReadLine()
+    let proc = quiz input
+    let output = Console.WriteLine proc
+    output
+    
+let superQuiz () =
+    (Console.ReadLine >> quiz >> Console.WriteLine)()
