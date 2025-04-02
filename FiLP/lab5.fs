@@ -1,4 +1,5 @@
 ﻿open System
+open Microsoft.FSharp.Collections
 
 let hello =
     //Console.WriteLine("Hello")
@@ -93,11 +94,11 @@ let quanDelVN x =
 //6
 
 let factorial n =
-    let rec sum n acc =
+    let rec mul n acc =
         match n with
             | 0 | 1 -> acc
-            | _ -> sum(n-1) (acc*n)
-    sum n 1
+            | _ -> mul(n-1) (acc*n)
+    mul n 1
 
 let sumDigits num : int =
     let rec digitalSubSum num currentSum = 
@@ -114,4 +115,21 @@ let isTrue (b:bool) =
         | true -> factorial 5
         | false -> sumDigits 123
 
-Console.WriteLine(isTrue false)
+//Console.WriteLine(isTrue false)
+
+let rec reduce (n:int) (func : int -> int -> int) (acc:int) =
+    match n with
+        | 0 -> acc
+        | _ ->
+            let digit = (n%10)
+            let newAcc = func acc digit
+            let curDigit = (n/10)
+            reduce curDigit func newAcc
+
+let testReduce () =
+    Console.WriteLine(reduce 1234 (fun acc digit -> acc + digit) 0)
+    Console.WriteLine(reduce 1234 (fun acc digit -> acc * digit) 1)
+    Console.WriteLine(reduce 1234 (fun acc digit -> if digit < acc then digit else acc) 10)
+    Console.WriteLine(reduce 1234 (fun acc digit -> if digit > acc then digit else acc) 0)
+
+testReduce()
