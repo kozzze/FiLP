@@ -229,3 +229,41 @@ let coprimeFilter (n:int) (condition: int -> bool) (func: int -> int -> int) (in
                 else acc
             loop (cur/10) newAcc
     loop n initial
+
+let coprimeFilterTest () =
+    Console.WriteLine(coprimeFilter 12345 (fun digit -> digit % 2 = 0) (fun acc digit -> digit + acc) 0)
+    Console.WriteLine(coprimeFilter 12345 (fun digit -> digit > 3) (fun acc digit -> digit * acc) 1)
+    Console.WriteLine(coprimeFilter 12345 (fun digit -> digit <> 1) (fun acc digit -> if digit < acc then digit else acc) 10)
+    Console.WriteLine(coprimeFilter 12345 (fun digit -> digit % 5 <> 0) (fun acc digit -> if digit > acc then digit else acc) 0)
+    Console.WriteLine(coprimeFilter 12345 (fun digit -> digit < 4) (fun acc digit -> acc + 1) 0)
+
+//16
+
+let isPrime n =
+    match n with
+    | n when n <= 1 -> false
+    | _ ->
+        let rec check i =
+            match i * i > n with
+            | true -> true
+            | false -> 
+                match n % i = 0 with
+                | true -> false
+                | false -> check (i + 1)
+        check 2
+
+let sumPrimeDivisors n =
+    let rec loop i acc =
+        match i > n with
+        | true -> acc
+        | false ->
+            match n % i = 0 && isPrime i with
+            | true -> loop (i + 1) (acc + i)
+            | false -> loop (i + 1) acc
+    loop 2 0
+
+let testVariant1 () =
+    let number = 30
+    
+    printfn "Метод 1: Сумма простых делителей числа %d = %d" number (sumPrimeDivisors number)
+testVariant1()
