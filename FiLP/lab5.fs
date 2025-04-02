@@ -175,7 +175,7 @@ let superQuiz () =
     (Console.ReadLine >> quiz >> Console.WriteLine)()
 
 
-//13-14
+//13
 let rec gcd a b =
     match b with
         | 0 -> a
@@ -203,7 +203,7 @@ let coprimeDigitsTest () =
     Console.WriteLine(coprimeDigits 12345 (fun acc digit -> acc + 1) 0)
 
 
-//15
+//14
 
 let eiler n =
     let rec loop cur acc =
@@ -216,3 +216,16 @@ let eiler n =
                 | _ -> acc
             loop (cur - 1) newAcc
     loop (n-1) 0
+
+//15
+let coprimeFilter (n:int) (condition: int -> bool) (func: int -> int -> int) (initial:int) =
+    let rec loop cur acc =
+        match cur with
+        | 0 -> acc
+        | _ ->
+            let digit = n % 10
+            let newAcc =
+                if gcd n digit = 1 && condition digit then func acc digit
+                else acc
+            loop (cur/10) newAcc
+    loop n initial
