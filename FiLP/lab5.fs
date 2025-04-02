@@ -145,3 +145,10 @@ let rec filterReduce (n:int) (func : int -> int -> int) (acc:int) (condition : i
                     | false -> acc
             let curDigit = n / 10
             filterReduce curDigit func newacc condition
+
+let filterReduceTest () = 
+    Console.WriteLine(filterReduce 12345 (fun acc digit -> acc + digit) 0 (fun digit -> digit % 2 = 0))
+    Console.WriteLine(filterReduce 12345 (fun acc digit -> acc * digit) 1 (fun digit -> digit <> 1))
+    Console.WriteLine(filterReduce 12345 (fun acc digit -> acc + 1) 0 (fun digit -> digit > 3))
+    Console.WriteLine(filterReduce 12345 (fun acc digit -> if digit < acc then digit else acc) 10 (fun digit -> true))
+filterReduceTest()
