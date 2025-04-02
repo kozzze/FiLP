@@ -275,7 +275,21 @@ let countDigitsMore3 n =
             | false -> loop (num / 10) count
     loop n 0
 
-
+//method 3 - Найти прозведение таких делителей числа, сумма цифр которых мень-ше, чем сумма цифр исходного числа.
+let multDivSumDigLessSum n =
+    let targetSum = sumDigits n
+    let rec loop divisor acc =
+        match divisor with
+        | 0 -> acc
+        | _ ->
+            match n % divisor = 0 && sumDigits divisor < targetSum with
+            | true -> loop (divisor - 1) (acc * divisor)
+            | false -> loop (divisor - 1) acc
+    match n with
+    | 0 | 1 -> 0 // Для 0 и 1 нет подходящих делителей
+    | _ -> 
+        let result = loop n 1
+        if result = 1 then 0 else result
 
 
 
@@ -285,5 +299,6 @@ let testMethods () =
     let number2 = 123456789
     printfn "Метод 1: Сумма простых делителей числа %d = %d" number1 (sumPrimeDivisors number1)
     printfn "Метод 2: Количество четных чисел > 3 числа %d = %d" number2 (countDigitsMore3 number2)
+    printfn "Метод 2: Прозведение делителей, сумма цифр меньше, чем сумма цифр исходного числа = %d" (multDivSumDigLessSum 12)
 testMethods()
 
