@@ -117,6 +117,7 @@ let isTrue (b:bool) =
 
 //Console.WriteLine(isTrue false)
 
+//7-8
 let rec reduce (n:int) (func : int -> int -> int) (acc:int) =
     match n with
         | 0 -> acc
@@ -134,6 +135,7 @@ let testReduce () =
 
 //testReduce()
 
+//9-10
 let rec filterReduce (n:int) (func : int -> int -> int) (acc:int) (condition : int -> bool) =
     match n with
         | 0 -> acc
@@ -151,4 +153,13 @@ let filterReduceTest () =
     Console.WriteLine(filterReduce 12345 (fun acc digit -> acc * digit) 1 (fun digit -> digit <> 1))
     Console.WriteLine(filterReduce 12345 (fun acc digit -> acc + 1) 0 (fun digit -> digit > 3))
     Console.WriteLine(filterReduce 12345 (fun acc digit -> if digit < acc then digit else acc) 10 (fun digit -> true))
-filterReduceTest()
+//filterReduceTest()
+
+//11
+let quiz input =
+    match input with
+        | "F#"|"Prolog" -> Console.WriteLine("Ну ты подлиза")
+        | "C" -> Console.WriteLine("Ну-ну, удачи")
+        | "Ruby" -> Console.WriteLine("ВХАХВАХВХАХВА")
+        | _ -> Console.WriteLine("Иди учись, бестолочь")
+quiz "Ruby"
