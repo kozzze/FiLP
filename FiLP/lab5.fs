@@ -23,7 +23,6 @@ let resPrint()=
     | Some(x1, x2) when x1 = x2 -> printfn $"Уравнение имеет один корень: {x1}"
     | Some(x1, x2) -> printfn $"Решение: {x1}, {x2}"
     | None -> printfn "Нет вещественных корней"
-
 //resPrint()
 
 //3
@@ -38,7 +37,6 @@ let cirCylPrint () =
     let v = cylinderV 3.0 2.0
     printfn $"Площадь круга = {s}"
     printfn $"Объём цилиндра = {v}"
-
 //cirCylPrint ()
 
 //4
@@ -63,6 +61,57 @@ let sumDTail n =
         else
             sum (n / 10) (acc + n % 10)
     sum n 0
-printf($"Сумма рекурсия вниз через выражение = {sumDDuwn 123}/n")
-printf($"Сумма хвостовая рекурсия = {sumDTail 123}")
+//printf($"Сумма рекурсия вниз через выражение = {sumDDuwn 123}")
+//printf($"Сумма хвостовая рекурсия = {sumDTail 123}")
 
+
+
+//Сумма делителей числа (лаба)
+//вверх
+let rec quanDelVV x index=
+    match index with
+    | index when (x%index = 0 && index < x) -> 1 + quanDelVV x (index+1)
+    | index when (index >= x) -> 0
+    | _ -> 0 + quanDelVV x (index+1)
+
+//System.Console.WriteLine(quanDelVV 10 1)
+
+//вниз
+let quanDelVN x = 
+    let rec quanDelVN x index sum =
+        let isNeed = (x%index = 0) && (index < x)
+        let new_sum = sum + 1
+        match isNeed with
+            | true -> quanDelVN x (index+1) (new_sum)
+            | false when index < x -> quanDelVN x (index+1) sum
+            | _ -> sum
+    quanDelVN x 1 0
+//System.Console.WriteLine(quanDelVN 10)
+
+//дз 5 лаб до конца
+
+//6
+
+let factorial n =
+    let rec sum n acc =
+        match n with
+            | 0 | 1 -> acc
+            | _ -> sum(n-1) (acc*n)
+    sum n 1
+
+let sumDigits num : int =
+    let rec digitalSubSum num currentSum = 
+        if num = 0 then currentSum
+        else
+            let currentNum = num / 10
+            let digital = num % 10
+            let accumulator = currentSum + digital
+            digitalSubSum currentNum accumulator
+    digitalSubSum num 0
+
+let isTrue (b:bool) =
+    match b with
+        | true -> factorial 5
+        | false -> sumDigits 123
+
+Console.WriteLine(isTrue false)

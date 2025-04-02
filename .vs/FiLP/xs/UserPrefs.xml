@@ -1,19 +1,16 @@
 ﻿<Properties StartupConfiguration="{71C00152-EF4C-4F39-8E46-518A9476A8A5}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FiLP/Program.fs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FiLP/lab5.fs">
     <Files>
-      <File FileName="FiLP/Program.fs" Line="2" Column="6" />
+      <File FileName="FiLP/lab5.fs" Line="91" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FiLP" expanded="True">
+          <Node name="FiLP">
             <Node name="FiLP">
-              <Node name="Program.fs" selected="True" />
+              <Node name="lab5.fs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -21,5 +18,8 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.FiLP PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
