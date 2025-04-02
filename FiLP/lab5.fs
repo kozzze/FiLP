@@ -132,4 +132,16 @@ let testReduce () =
     Console.WriteLine(reduce 1234 (fun acc digit -> if digit < acc then digit else acc) 10)
     Console.WriteLine(reduce 1234 (fun acc digit -> if digit > acc then digit else acc) 0)
 
-testReduce()
+//testReduce()
+
+let rec filterReduce (n:int) (func : int -> int -> int) (acc:int) (condition : int -> bool) =
+    match n with
+        | 0 -> acc
+        | _ ->
+            let digit = n%10
+            let newacc =    
+                match condition digit with
+                    | true -> func acc digit
+                    | false -> acc
+            let curDigit = n / 10
+            filterReduce curDigit func newacc condition
