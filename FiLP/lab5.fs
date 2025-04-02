@@ -286,7 +286,7 @@ let multDivSumDigLessSum n =
             | true -> loop (divisor - 1) (acc * divisor)
             | false -> loop (divisor - 1) acc
     match n with
-    | 0 | 1 -> 0 // Для 0 и 1 нет подходящих делителей
+    | 0 | 1 -> 0 
     | _ -> 
         let result = loop n 1
         if result = 1 then 0 else result
@@ -300,5 +300,24 @@ let testMethods () =
     printfn "Метод 1: Сумма простых делителей числа %d = %d" number1 (sumPrimeDivisors number1)
     printfn "Метод 2: Количество четных чисел > 3 числа %d = %d" number2 (countDigitsMore3 number2)
     printfn "Метод 2: Прозведение делителей, сумма цифр меньше, чем сумма цифр исходного числа = %d" (multDivSumDigLessSum 12)
-testMethods()
+//testMethods()
 
+let getFunctionByNumber =
+    function
+    | 1 -> sumPrimeDivisors
+    | 2 -> countDigitsMore3
+    | 3 -> multDivSumDigLessSum
+    | _ -> failwith "Неверный номер функции (допустимо 1-3)"
+
+let main =
+    let parseInput (input: string) =
+        match input.Split() |> Array.map int with
+        | [| funcNum; arg |] -> (funcNum, arg)
+        | _ -> failwith "Ожидается два числа через пробел"   
+    let executeFunction (funcNum, arg) =
+        (getFunctionByNumber funcNum) arg
+    let printResult result =
+        printfn "Result = %d" result
+    (Console.ReadLine >> parseInput >> executeFunction >> printResult) ()
+
+main
