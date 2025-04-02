@@ -175,7 +175,7 @@ let superQuiz () =
     (Console.ReadLine >> quiz >> Console.WriteLine)()
 
 
-//13
+//13-14
 let rec gcd a b =
     match b with
         | 0 -> a
@@ -202,4 +202,17 @@ let coprimeDigitsTest () =
     Console.WriteLine(coprimeDigits 12345 (fun acc digit -> if digit > acc then digit else acc) 0)
     Console.WriteLine(coprimeDigits 12345 (fun acc digit -> acc + 1) 0)
 
-coprimeDigits()
+
+//15
+
+let eiler n =
+    let rec loop cur acc =
+        match cur with
+        | 0 -> acc
+        | _ ->
+            let newAcc =
+                match gcd n cur with
+                | 1 -> acc + 1
+                | _ -> acc
+            loop (cur - 1) newAcc
+    loop (n-1) 0
