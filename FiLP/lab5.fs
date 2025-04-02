@@ -237,8 +237,9 @@ let coprimeFilterTest () =
     Console.WriteLine(coprimeFilter 12345 (fun digit -> digit % 5 <> 0) (fun acc digit -> if digit > acc then digit else acc) 0)
     Console.WriteLine(coprimeFilter 12345 (fun digit -> digit < 4) (fun acc digit -> acc + 1) 0)
 
-//16
+//16 var 1
 
+//method 1 - sum prime divisors
 let isPrime n =
     match n with
     | n when n <= 1 -> false
@@ -262,8 +263,27 @@ let sumPrimeDivisors n =
             | false -> loop (i + 1) acc
     loop 2 0
 
-let testVariant1 () =
-    let number = 30
-    
-    printfn "Метод 1: Сумма простых делителей числа %d = %d" number (sumPrimeDivisors number)
-testVariant1()
+ //method - 2 count %2!=0 > 3
+let countDigitsMore3 n =
+    let rec loop num count =
+        match num with
+        | 0 -> count
+        | _ ->
+            let digit = num % 10
+            match digit % 2 <> 0 && digit > 3 with
+            | true -> loop (num / 10) (count + 1)
+            | false -> loop (num / 10) count
+    loop n 0
+
+
+
+
+
+
+let testMethods () =
+    let number1 = 30
+    let number2 = 123456789
+    printfn "Метод 1: Сумма простых делителей числа %d = %d" number1 (sumPrimeDivisors number1)
+    printfn "Метод 2: Количество четных чисел > 3 числа %d = %d" number2 (countDigitsMore3 number2)
+testMethods()
+
