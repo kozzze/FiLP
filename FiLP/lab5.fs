@@ -162,7 +162,7 @@ let quiz input =
         | "C" -> Console.WriteLine("Ну-ну, удачи")
         | "Ruby" -> Console.WriteLine("ВХАХВАХВХАХВА")
         | _ -> Console.WriteLine("Иди учись, бестолочь")
-quiz "Ruby"
+//quiz "Ruby"
 
 //12
 let curryQuiz () =
@@ -173,3 +173,33 @@ let curryQuiz () =
     
 let superQuiz () =
     (Console.ReadLine >> quiz >> Console.WriteLine)()
+
+
+//13
+let rec gcd a b =
+    match b with
+        | 0 -> a
+        | _ -> gcd b (a%b)
+
+let coprimeDigits (n :int) (func: int -> int -> int) (acc :int) =
+        let rec loop cur acc =
+            match cur with
+                | 0 -> acc
+                | _ ->
+                    let digit = cur % 10
+                    let newAcc =
+                        match digit with
+                            | 0 -> acc
+                            | digit when gcd n digit = 1 -> func acc digit
+                            | _ -> acc
+                    loop (cur/10) newAcc
+        loop n acc
+
+let coprimeDigitsTest () =
+    Console.WriteLine(coprimeDigits 12345 (fun acc digit -> acc + digit) 0)
+    Console.WriteLine(coprimeDigits 12345 (fun acc digit -> acc * digit) 1)
+    Console.WriteLine(coprimeDigits 12345 (fun acc digit -> if digit < acc then digit else acc) 10)
+    Console.WriteLine(coprimeDigits 12345 (fun acc digit -> if digit > acc then digit else acc) 0)
+    Console.WriteLine(coprimeDigits 12345 (fun acc digit -> acc + 1) 0)
+
+coprimeDigits()
