@@ -363,9 +363,35 @@ let findElementsWithAllPrimeDivisors (input: int list) =
     input |> List.filter (fun x ->
         primes |> List.forall (fun p -> x % p = 0))
     
-    
-    
-    
+//6
+let sortTuples (input: (int * int * int * int * int) list) =
+    input |> List.sortBy (fun (a, b, c, d, e) -> [a; b; c; d; e])
+    |> List.map (fun (a, b, c, d, e) -> a * 10000 + b * 1000 + c * 100 + d * 10 + e)    
+
+//7
+
+let sumOfDivisors n =
+    [1..n/2] |> List.filter (fun x -> n % x = 0) |> List.sum
+
+let findSumOfDivisorsWithCondition (input: int list) =
+    let avg = List.averageBy float input
+    let evenIndexElements = input |> List.mapi (fun i x -> if i % 2 = 0 then Some x else None) |> List.choose id
+    input |> List.sortBy (fun x ->
+        sumOfDivisors x)    
+//8
+
+let digitFrequency n =
+    n.ToString()
+    |> Seq.map (fun c -> int c - int '0')
+    |> Seq.countBy id
+    |> Seq.toList
+
+let findAverageOfFrequentDigits (input: int list) =
+    let freq = input |> List.collect digitFrequency
+    input |> List.map (fun num ->
+        let digits = num.ToString() |> Seq.map (fun c -> int c - int '0')
+        let frequentDigits = digits |> Seq.filter (fun d -> List.exists (fun (digit, count) -> digit = d && count > 1) freq)
+        frequentDigits |> Seq.average)    
     
 [<EntryPoint>]
 let main argv = 
