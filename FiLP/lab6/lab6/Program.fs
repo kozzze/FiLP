@@ -345,6 +345,28 @@ let findPythagoreanTriplets (input: int list) =
                 if a < b && b < c && a * a + b * b = c * c then 
                     Some (a, b, c) 
                 else None)))
+    
+//5
+
+let primesUpTo n =
+    let sieve = Array.create (n + 1) true
+    sieve.[0] <- false
+    sieve.[1] <- false
+    for i = 2 to int (sqrt (float n)) do
+        if sieve.[i] then
+            for j = i * i to n do
+                sieve.[j] <- false
+    [for i in 2..n do if sieve.[i] then yield i]
+
+let findElementsWithAllPrimeDivisors (input: int list) =
+    let primes = primesUpTo (List.max input)
+    input |> List.filter (fun x ->
+        primes |> List.forall (fun p -> x % p = 0))
+    
+    
+    
+    
+    
 [<EntryPoint>]
 let main argv = 
 //    writeList readData
