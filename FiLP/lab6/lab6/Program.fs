@@ -251,6 +251,68 @@ let sumInRangeChurch a b list =
     let filteredList = filterInRange list
     sum filteredList 0
 
+//55
+
+let sortByFrequency arr =
+    arr
+    |> List.countBy id  
+    |> List.sortByDescending snd  
+    |> List.collect (fun (x, count) -> List.init count (fun _ -> x))  
+
+let countFrequency list =
+    let rec count lst countList =
+        match lst with
+        | [] -> countList
+        | h::t -> 
+            let countOfH = List.filter (fun x -> x = h) list |> List.length
+            let countList' = if List.exists (fun (x, _) -> x = h) countList then countList else (h, countOfH) :: countList
+            count t countList'
+    count list []
+
+let sortByFrequencyChurch arr =
+    let counts = countFrequency arr
+    let sortedCounts = List.sortByDescending snd counts  
+    List.collect (fun (x, count) -> List.init count (fun _ -> x)) sortedCounts
+
+
+
+//------17---------
+
+
+//1
+let lcs (A: 'a list) (B: 'a list) : 'a list =
+    let m = List.length A
+    let n = List.length B
+    let dp = Array2D.init (m + 1) (n + 1) (fun _ _ -> 0)
+
+    for i in 1 .. m do
+        for j in 1 .. n do
+            if A.[i - 1] = B.[j - 1] then
+                dp.[i, j] <- dp.[i - 1, j - 1] + 1
+            else
+                dp.[i, j] <- max dp.[i - 1, j] dp.[i, j - 1]
+
+    let rec buildLCS i j =
+        if i = 0 || j = 0 then []
+        else if A.[i - 1] = B.[j - 1] then
+            A.[i - 1] :: buildLCS (i - 1) (j - 1)
+        else if dp.[i - 1, j] >= dp.[i, j - 1] then
+            buildLCS (i - 1) j
+        else
+            buildLCS i (j - 1)
+
+    buildLCS m n
+
+//2
+
+let processList (input: int list) =
+    let divByTwo = List.filter (fun x -> x % 2 = 0) input |> List.map (fun x -> x / 2)
+    let divByThree = divByTwo |> List.filter (fun x -> x % 3 = 0)
+    let squares = divByThree |> List.map (fun x -> x * x)
+    let commonElements = squares |> List.filter (fun x -> List.contains x divByTwo)
+    let allElements = List.concat [divByThree; squares; commonElements]
+    
+    (divByTwo, divByThree, squares, commonElements, allElements)
 
 
 [<EntryPoint>]
@@ -285,4 +347,6 @@ let main argv =
     // | None -> printfn "Нет элементов в интервале [%d, %d]" a b
     // let resultChurch = sumInRangeChurch a b arr
     // printfn "Сумма элементов в интервале [%d, %d] с использованием Church List: %d" a b resultChurch
+    // let sortedArrChurch = sortByFrequencyChurch arr
+    // printfn "Упорядоченный список с Church List: %A" sortedArrChurch
     0
