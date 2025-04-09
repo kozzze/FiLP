@@ -210,7 +210,27 @@ let findMaxInRangeChurch a b list =
     if List.isEmpty filteredList then None  
     else Some (findMax filteredList Int32.MinValue)
       
-        
+//35
+
+let findClosestToR R arr =
+    arr
+    |> List.minBy (fun x -> abs(x - R))
+
+let findClosestToRChurch R list =
+    let rec findClosest lst closestVal minDiff =
+        match lst with
+        | [] -> closestVal
+        | h::t ->
+            let diff = abs (h - R)
+            if diff < minDiff then
+                findClosest t h diff
+            else
+                findClosest t closestVal minDiff
+
+    match list with
+    | [] -> None  // Если список пустой, возвращаем None
+    | h::t -> Some (findClosest t h (abs (h - R)))
+
 [<EntryPoint>]
 let main argv = 
 //    writeList readData
@@ -230,6 +250,7 @@ let main argv =
     let index = 3
     let a = 2
     let b = 6
+    let R = 3
     // let resultList = isLocalMinList index arr
     // printfn "Метод List: Элемент с индексом %d %s локальный минимум" index (if resultList then "является" else "не является")
     // let resultChurch = isLocalMin index arr
@@ -240,5 +261,4 @@ let main argv =
     // match resultChurch with
     // | Some maxVal -> printfn "Максимальный элемент в интервале [%d, %d] с использованием Church List: %d" a b maxVal
     // | None -> printfn "Нет элементов в интервале [%d, %d]" a b
-    
     0
