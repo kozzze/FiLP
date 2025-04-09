@@ -134,6 +134,7 @@ let f10 list = accCond list count (f10Cond list) 0
 //---------
 //вариант 5 - 5 15 25 35 45 55
 
+//5
 let toChurchList (lst: 'a list) : ('a -> 'b -> 'b) -> 'b -> 'b =
     let rec loop lst cons nil =
         match lst with
@@ -228,8 +229,29 @@ let findClosestToRChurch R list =
                 findClosest t closestVal minDiff
 
     match list with
-    | [] -> None  // Если список пустой, возвращаем None
+    | [] -> None  
     | h::t -> Some (findClosest t h (abs (h - R)))
+    
+
+//45
+    
+let sumInRangeChurch a b list =
+    let rec filterInRange lst =
+        match lst with
+        | [] -> []
+        | h::t -> 
+            if h >= a && h <= b then h :: filterInRange t
+            else filterInRange t
+
+    let rec sum lst acc =
+        match lst with
+        | [] -> acc
+        | h::t -> sum t (acc + h)
+
+    let filteredList = filterInRange list
+    sum filteredList 0
+
+
 
 [<EntryPoint>]
 let main argv = 
@@ -261,4 +283,6 @@ let main argv =
     // match resultChurch with
     // | Some maxVal -> printfn "Максимальный элемент в интервале [%d, %d] с использованием Church List: %d" a b maxVal
     // | None -> printfn "Нет элементов в интервале [%d, %d]" a b
+    // let resultChurch = sumInRangeChurch a b arr
+    // printfn "Сумма элементов в интервале [%d, %d] с использованием Church List: %d" a b resultChurch
     0
