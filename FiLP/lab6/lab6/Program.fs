@@ -441,4 +441,5 @@ let main argv =
     // printfn "Сумма элементов в интервале [%d, %d] с использованием Church List: %d" a b resultChurch
     // let sortedArrChurch = sortByFrequencyChurch arr
     // printfn "Упорядоченный список с Church List: %A" sortedArrChurch
+    // Пример тестов
     0
