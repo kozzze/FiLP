@@ -392,6 +392,20 @@ let findAverageOfFrequentDigits (input: int list) =
         let digits = num.ToString() |> Seq.map (fun c -> int c - int '0')
         let frequentDigits = digits |> Seq.filter (fun d -> List.exists (fun (digit, count) -> digit = d && count > 1) freq)
         frequentDigits |> Seq.average)    
+
+//9
+
+let processNumbers (input: int list) =
+    input |> List.filter (fun x -> x > List.sum input)
+    
+//10
+let processProductAndSum (input: int list) =
+    let list2 = input |> List.collect (fun x -> input |> List.map (fun y -> x * y))
+    let list3 = input |> List.collect (fun x -> input |> List.map (fun y -> x + y))
+    let list4 = input |> List.filter (fun x -> input |> List.filter (fun y -> y % x = 0) |> List.length = 4)
+    (list2, list3, list4)
+
+
     
 [<EntryPoint>]
 let main argv = 
