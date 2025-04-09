@@ -380,18 +380,18 @@ let findSumOfDivisorsWithCondition (input: int list) =
         sumOfDivisors x)    
 //8
 
-let digitFrequency n =
-    n.ToString()
-    |> Seq.map (fun c -> int c - int '0')
-    |> Seq.countBy id
-    |> Seq.toList
-
-let findAverageOfFrequentDigits (input: int list) =
-    let freq = input |> List.collect digitFrequency
-    input |> List.map (fun num ->
-        let digits = num.ToString() |> Seq.map (fun c -> int c - int '0')
-        let frequentDigits = digits |> Seq.filter (fun d -> List.exists (fun (digit, count) -> digit = d && count > 1) freq)
-        frequentDigits |> Seq.average)    
+// let digitFrequency n =
+//     n.ToString()
+//     |> Seq.map (fun c -> int c - int '0')
+//     |> Seq.countBy id
+//     |> Seq.toList
+//
+// let findAverageOfFrequentDigits (input: int list) =
+//     let freq = input |> List.collect digitFrequency
+//     input |> List.map (fun num ->
+//         let digits = num.ToString() |> Seq.map (fun c -> int c - int '0')
+//         let frequentDigits = digits |> Seq.filter (fun d -> List.exists (fun (digit, count) -> digit = d && count > 1) freq)
+//         frequentDigits |> Seq.average)    
 
 //9
 
@@ -404,6 +404,28 @@ let processProductAndSum (input: int list) =
     let list3 = input |> List.collect (fun x -> input |> List.map (fun y -> x + y))
     let list4 = input |> List.filter (fun x -> input |> List.filter (fun y -> y % x = 0) |> List.length = 4)
     (list2, list3, list4)
+
+//------18------
+
+let primes n =
+    let sieve = Array.create (n + 1) true
+    sieve.[0] <- false
+    sieve.[1] <- false
+    for i = 2 to int (sqrt (float n)) do
+        if sieve.[i] then
+            for j = i * i to n do
+                sieve.[j] <- false
+    [for i in 2..n do if sieve.[i] then yield i]
+
+let primeDivisors n =
+    let primes = primes n
+    primes |> List.filter (fun p -> n % p = 0)
+
+let findElementsAllPrimeDivisors (input: int list) =
+    input |> List.filter (fun x ->
+        let divs = primeDivisors x
+        divs |> List.forall (fun d -> List.contains d input))
+
 
 
     
@@ -441,5 +463,7 @@ let main argv =
     // printfn "Сумма элементов в интервале [%d, %d] с использованием Church List: %d" a b resultChurch
     // let sortedArrChurch = sortByFrequencyChurch arr
     // printfn "Упорядоченный список с Church List: %A" sortedArrChurch
-    // Пример тестов
+    // let input = [30; 20; 15; 45] 
+    // let result = findElementsAllPrimeDivisors input
+    // printfn "Elements with all prime divisors: %A" result
     0
