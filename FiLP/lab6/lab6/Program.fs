@@ -314,7 +314,37 @@ let processList (input: int list) =
     
     (divByTwo, divByThree, squares, commonElements, allElements)
 
+//3
 
+let gcd a b = 
+    let rec loop a b = 
+        if b = 0 then a else loop b (a % b)
+    loop a b
+
+let findPairsForN (N: int) =
+    let pairs = 
+        [1..N] 
+        |> List.collect (fun x -> 
+            [1..N] 
+            |> List.choose (fun y -> 
+                if x * y = N then 
+                    let d = gcd x y 
+                    Some (x / d, y / d)
+                else None))
+    List.distinct pairs
+
+//4
+
+let findPythagoreanTriplets (input: int list) =
+    input 
+    |> List.collect (fun a ->
+        input 
+        |> List.collect (fun b ->
+            input 
+            |> List.choose (fun c ->
+                if a < b && b < c && a * a + b * b = c * c then 
+                    Some (a, b, c) 
+                else None)))
 [<EntryPoint>]
 let main argv = 
 //    writeList readData
