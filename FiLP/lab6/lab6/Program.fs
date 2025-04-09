@@ -158,7 +158,34 @@ let isGlobalMin index list =
             else loop (i + 1) t
     loop 0 list
     
+//15
+let isLocalMin index list =
+    let rec getElement idx lst =
+        match lst with
+        | [] -> None
+        | h::t -> if idx = 0 then Some h else getElement (idx - 1) t
+
+    match getElement index list with
+    | Some current ->
+        let left = if index > 0 then Some (List.nth list (index - 1)) else None
+        let right = if index < List.length list - 1 then Some (List.nth list (index + 1)) else None
+        (left, right) |> function
+        | (Some l, Some r) -> current < l && current < r
+        | (Some l, None) -> current < l
+        | (None, Some r) -> current < r
+        | (None, None) -> false 
+    | None -> false
     
+let isLocalMinList index list =
+    if index > 0 && index < List.length list - 1 then
+        let left = list.[index - 1]
+        let right = list.[index + 1]
+        let current = list.[index]
+        current < left && current < right
+    else
+        false
+        
+        
 [<EntryPoint>]
 let main argv = 
 //    writeList readData
@@ -174,11 +201,12 @@ let main argv =
     // let z = System.Console.ReadKey()
     
     
-    let list = [3; 1; 4; 1; 5; 9; 2; 6; 5; 3]
+    let arr = [3; 1; 4; 1; 5; 9; 2; 6; 5; 3]
     let index = 3
-    let resultChurch = isGlobalMin index list  // Проверим, является ли элемент с индексом 3 глобальным минимумом
-    printfn "Список Черча: элемент с индексом %d %s глобальный минимум" index (if resultChurch then "является" else "не является")
-
+    // let resultList = isLocalMinList index arr
+    // printfn "Метод List: Элемент с индексом %d %s локальный минимум" index (if resultList then "является" else "не является")
+    // let resultChurch = isLocalMin index arr
+    // printfn "Метод Church: Элемент с индексом %d %s локальный минимум" index (if resultChurch then "является" else "не является")
     
     
     0
