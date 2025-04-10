@@ -407,28 +407,34 @@ let processProductAndSum (input: int list) =
 
 //------18------
 
-let primes n =
-    let sieve = Array.create (n + 1) true
-    sieve.[0] <- false
-    sieve.[1] <- false
-    for i = 2 to int (sqrt (float n)) do
-        if sieve.[i] then
-            for j = i * i to n do
-                sieve.[j] <- false
-    [for i in 2..n do if sieve.[i] then yield i]
+let reverseArray arr =
+    Array.rev arr
+let copyLastElementFromBToA a b =
+    Array.append a [| Array.last b |]
+let mergeArrays a b =
+    Array.append a b
+let filterDivisibleBy3 arr =
+    Array.filter (fun x -> x % 3 = 0) arr
+let readArray () =
+    Console.ReadLine().Split(' ') |> Array.map int
 
-let primeDivisors n =
-    let primes = primes n
-    primes |> List.filter (fun p -> n % p = 0)
+let printDifference () =
+    let a = readArray ()
+    let b = readArray ()
+    let aNumber = Array.fold (fun acc x -> acc * 10 + x) 0 a
+    let bNumber = Array.fold (fun acc x -> acc * 10 + x) 0 b
+    printfn "%d" (aNumber - bNumber)
+let printUnion () =
+    let a = readArray ()
+    let b = readArray ()
+    Array.append a b |> Array.distinct |> Array.iter (printf "%d ")
+let printIntersection () =
+    let a = readArray ()
+    let b = readArray ()
+    a |> Array.filter (fun x -> Array.contains x b) |> Array.iter (printf "%d ")
 
-let findElementsAllPrimeDivisors (input: int list) =
-    input |> List.filter (fun x ->
-        let divs = primeDivisors x
-        divs |> List.forall (fun d -> List.contains d input))
 
 
-
-    
 [<EntryPoint>]
 let main argv = 
 //    writeList readData
