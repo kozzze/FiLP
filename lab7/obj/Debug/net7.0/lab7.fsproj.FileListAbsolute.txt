@@ -1,0 +1,4 @@
+/Users/kozzze/Desktop/Учеба/FiLP/lab7/obj/Debug/net7.0/lab7.fsproj.AssemblyReference.cache
+/Users/kozzze/Desktop/Учеба/FiLP/lab7/obj/Debug/net7.0/lab7.AssemblyInfoInputs.cache
+/Users/kozzze/Desktop/Учеба/FiLP/lab7/obj/Debug/net7.0/lab7.AssemblyInfo.fs
+/Users/kozzze/Desktop/Учеба/FiLP/lab7/obj/Debug/net7.0/lab7.fsproj.CoreCompileInputs.cache

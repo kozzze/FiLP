@@ -432,6 +432,17 @@ let printIntersection () =
     let a = readArray ()
     let b = readArray ()
     a |> Array.filter (fun x -> Array.contains x b) |> Array.iter (printf "%d ")
+let printSymmetricDifference () =
+    let a = readArray ()
+    let b = readArray ()
+    let diff = Array.filter (fun x -> not (Array.contains x b)) a
+    let diff2 = Array.filter (fun x -> not (Array.contains x a)) b
+    Array.append diff diff2 |> Array.iter (printf "%d ")
+let printNumbersDivisibleBy13Or17 () =
+    [1..100]
+    |> List.filter (fun x -> x % 13 = 0 || x % 17 = 0)
+    |> List.toArray
+    |> Array.iter (printf "%d ")
 
 
 
@@ -472,4 +483,5 @@ let main argv =
     // let input = [30; 20; 15; 45] 
     // let result = findElementsAllPrimeDivisors input
     // printfn "Elements with all prime divisors: %A" result
+    
     0
