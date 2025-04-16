@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vpoznygwSko=",
+  "success": true,
+  "projectFilePath": "/Users/kozzze/Desktop/Учеба/FiLP/laba7/t5/t5.fsproj",
+  "expectedPackageFiles": [
+    "/Users/kozzze/.nuget/packages/fsharp.core/7.0.300/fsharp.core.7.0.300.nupkg.sha512"
+  ],
+  "logs": []
+}

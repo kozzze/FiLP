@@ -1,0 +1,6 @@
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/tt6.fsproj.AssemblyReference.cache
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/tt6.AssemblyInfoInputs.cache
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/tt6.AssemblyInfo.fs
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/tt6.fsproj.CoreCompileInputs.cache
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/tt6.sourcelink.json
+/Users/kozzze/Desktop/Учеба/FiLP/laba7/tt6/tt6/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache
