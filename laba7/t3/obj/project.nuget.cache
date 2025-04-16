@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "23NyR/0TI1w=",
+  "success": true,
+  "projectFilePath": "/Users/kozzze/Desktop/Учеба/FiLP/laba7/t3/t3.fsproj",
+  "expectedPackageFiles": [
+    "/Users/kozzze/.nuget/packages/fparsec/1.1.1/fparsec.1.1.1.nupkg.sha512",
+    "/Users/kozzze/.nuget/packages/fsharp.core/7.0.300/fsharp.core.7.0.300.nupkg.sha512"
+  ],
+  "logs": []
+}
