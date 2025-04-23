@@ -33,3 +33,6 @@ grand_pa_and_son(X,Y):- (parent(X,Z),parent(Z,Y),man(X),man(Y));(parent(Y,Z),par
 grand_pa_and_son_pred(X,Y):- (father(X,Z),(father(Z,Y);mother(Z,Y)));(father(Y,Z),(father(Z,X);mother(Z,Y))).
 
 uncle(X,Y):- brother(X,Z),parent(Z,Y).
+
+% 4
+
