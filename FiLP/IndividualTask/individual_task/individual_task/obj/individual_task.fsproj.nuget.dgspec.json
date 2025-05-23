@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kozzze/Desktop/Учеба/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj": {}
+    "/Users/kozzze/Desktop/Учеба/FiLP/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj": {}
   },
   "projects": {
-    "/Users/kozzze/Desktop/Учеба/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj": {
+    "/Users/kozzze/Desktop/Учеба/FiLP/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kozzze/Desktop/Учеба/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj",
+        "projectUniqueName": "/Users/kozzze/Desktop/Учеба/FiLP/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj",
         "projectName": "individual_task",
-        "projectPath": "/Users/kozzze/Desktop/Учеба/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj",
+        "projectPath": "/Users/kozzze/Desktop/Учеба/FiLP/FiLP/IndividualTask/individual_task/individual_task/individual_task.fsproj",
         "packagesPath": "/Users/kozzze/.nuget/packages/",
-        "outputPath": "/Users/kozzze/Desktop/Учеба/FiLP/IndividualTask/individual_task/individual_task/obj/",
+        "outputPath": "/Users/kozzze/Desktop/Учеба/FiLP/FiLP/IndividualTask/individual_task/individual_task/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kozzze/.nuget/NuGet/NuGet.Config"

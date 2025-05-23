@@ -1,0 +1,18 @@
+# Build results
+bin/
+obj/
+
+# Rider/JetBrains
+.idea/
+*.sln.iml
+*.user
+*.suo
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
