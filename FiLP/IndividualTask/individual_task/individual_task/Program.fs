@@ -8,7 +8,6 @@ let isPalindrome (n: int64) : bool =
 let findPalindromicSums (limit: int64) : seq<int64> =
     let maxStart = int (sqrt (float limit))
 
-    |> List.iter (fun start ->
     let generateSumsFrom start =
         let rec loop current acc (results: Set<int64>) =
             let sum = acc + int64 (current * current) //вычисляем сумму квадратов
